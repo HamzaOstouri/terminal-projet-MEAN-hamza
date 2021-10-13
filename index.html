@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Goolge Map</title>
+    <style>
+        #map{
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- key : AIzaSyBsk0m49jkvStUThMLh_uyDOsEoJ-Z67aY -->
+    <h1>My Google Map</h1>
+    <!-- The div element for the map  -->
+    <div id="map"></div>
+    <script>
+        //    const svgMarker = {
+        //     path: "M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
+        //     fillColor: "blue",
+        //     fillOpacity: 0.6,
+        //     strokeWeight: 0,
+        //     rotation: 0,
+        //     scale: 2,
+        //     anchor: new google.maps.Point(15, 30),
+        // };
+        function initMap() {
+            // Map options
+            // var map = new google.maps.Map(document.getElementById("map"), {
+            var options = {
+            center: { lat: 36.7362, lng: 10.2082 },
+            zoom: 11,
+            }
+            var map = new google.maps.Map(document.getElementById("map"), options);
+
+
+            // listen for click on map
+            google.maps.event.addListener(map, 'click',
+            function(event){
+                // Add marker
+                addMarker({coords: event.latLng});
+            });
+            // Array of markers
+            var markers= [
+                {
+                    coords:{lat: 36.7262, lng: 10.2069}, 
+                    iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+                    content: '<h1>MOUROUJ 1 </h1>'
+                },
+                {
+                    coords:{lat: 36.7262, lng: 10.008},
+                    // iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/bushfire.png'
+                 },
+                {
+                    coords:{lat: 36.7537, lng: 10.1913}, 
+                    content: '<h1>7ay ibn sina </h1>',
+                    // iconImage: svgMarker
+                }
+            ];
+
+            // Loop through markers
+
+            markers.forEach(element => {
+                addMarker(element);
+            });
+            // for(var i=0; i < markers.length; i++) {
+            //     addMarker(markers[i])
+            // }
+
+            // addMarker({lat: 36.7262, lng: 10.2069});
+            // addMarker({
+            //     coords:{lat: 36.7262, lng: 10.2069}, 
+            //     iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+            //     content: '<h1>MOUROUJ 1 </h1>'
+            // });
+            // addMarker({
+            //     coords:{lat: 36.7262, lng: 10.008}, // iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/bushfire.png'
+            // });
+            // // cite ibn sina coords: 36.7537° N, 10.1913° E
+            // addMarker({
+            //     coords:{lat: 36.7537, lng: 10.1913}, 
+            //     content: '<h1>7ay ibn sina </h1>'
+            //     // iconImage: svgMarker
+            // });
+            
+            // Add Marker function
+            // function addMarker(coords, symbole){
+            function addMarker(props){
+                var marker = new google.maps.Marker({
+                    position: props.coords,
+                    map: map,
+                    // icon: props.iconImage
+                });
+                // Check for customicon
+                // if we don't put iconImage is default but not undefined tji moush behya akeka
+                if(props.iconImage){
+                    marker.setIcon(props.iconImage);
+                }
+
+                // check content 
+                if(props.content){
+                    var infoWindow = new google.maps.InfoWindow({
+                        content: props.content
+                    });
+                    marker.addListener('click', function(){
+                        infoWindow.open(map, marker);
+                    });
+                }
+
+            }
+        
+        }
+       
+            
+    </script>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. --> 
+    <script 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsk0m49jkvStUThMLh_uyDOsEoJ-Z67aY&callback=initMap&libraries=&v=weekly"
+        async
+    ></script>
+    
+    <!--  const locations = [
+         { lat: -31.56391, lng: 147.154312 },
+         { lat: -33.718234, lng: 150.363181 },
+         { lat: -33.727111, lng: 150.371124 },
+         { lat: -33.848588, lng: 151.209834 },
+         { lat: -33.851702, lng: 151.216968 },
+         { lat: -34.671264, lng: 150.863657 },
+         { lat: -35.304724, lng: 148.662905 },
+         { lat: -36.817685, lng: 175.699196 },
+         { lat: -36.828611, lng: 175.790222 },
+         { lat: -37.75, lng: 145.116667 },
+         { lat: -37.759859, lng: 145.128708 },
+         { lat: -37.765015, lng: 145.133858 },
+         { lat: -37.770104, lng: 145.143299 },
+         { lat: -37.7737, lng: 145.145187 },
+         { lat: -37.774785, lng: 145.137978 },
+         { lat: -37.819616, lng: 144.968119 },
+         { lat: -38.330766, lng: 144.695692 },
+         { lat: -39.927193, lng: 175.053218 },
+         { lat: -41.330162, lng: 174.865694 },
+         { lat: -42.734358, lng: 147.439506 },
+         { lat: -42.734358, lng: 147.501315 },
+         { lat: -42.735258, lng: 147.438 },
+         { lat: -43.999792, lng: 170.463352 },
+     ]; -->
+
+</body>
+
+</html>
