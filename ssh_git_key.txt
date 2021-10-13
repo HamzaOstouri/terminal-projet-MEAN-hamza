@@ -1,0 +1,10 @@
+cd ~/.ssh
+  >> chemin : C:\Users\hamza\.ssh
+ls
+
+$ ssh-keygen -o -t rsa -C "hamza.missaoui47@gmail.com"
+
+
+cat ~/.ssh/id_rsa.pub
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1jINkBP3w421TqRmIC9MtUvuc40ZaHZrJeG9HIRNfbIX7TC1BjqBXqg7KqWgnBiyREdzkjnPv8bsmEGhkIrNcw8l/iF7houHS89sumwvM+RKmh1UYLab8DPYLRbmfYlIvcBuMASy9UyQU9a1z4OiUsnKlkeAEW7FcnqOcORJ+nytXvyqaF2P2D0yzhWAP0h5Vn3l1qTLONFGgvbu2woX6bIW4YHDlWcI8iG8Jo8El+6kV2kCf+BtxTOKVb5JzCAcFGfhTQZU1SYlpVr2G2JBK1nNYOLCQqU5e/Dt111JaJJbPpSEtz8FqsteJWLleV2Z2WK/DjELPS24qhltSH5va2jUMQHGdCz9claPxHr7hDhLO7gCCUJS4BCNW+6qhJj3aKZbZMd8j8+axGAsxD3w7m/T3cKs2W8ySlMTEJjXgovUYYlIhTI49ZnfM/sFOoGuUKUTijyV2aBxIA44sDmB/BpdJGjNUbCqKgeX+jtmp+7I7QyMh6Tzmcvs2oiBm8i8= hamza.mssaoui47@gmail.com
